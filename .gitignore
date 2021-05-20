@@ -1,3 +1,10 @@
 .ipynb_checkpoints
 *.py
 *.html
+
+# exclude sphinx build files
+sphinx/_build
+
+# exclude copied images, but keep a README so that the folder gets cloned
+sphinx/nb/images/*
+!sphinx/nb/images/README.md

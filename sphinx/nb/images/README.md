@@ -1,0 +1,1 @@
+Placeholder folder for sphinx to copy images into
