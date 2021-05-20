@@ -7,4 +7,5 @@ sphinx/_build
 
 # exclude copied images, but keep a README so that the folder gets cloned
 sphinx/nb/images/*
+sphinx/nb/README.md
 !sphinx/nb/images/README.md
