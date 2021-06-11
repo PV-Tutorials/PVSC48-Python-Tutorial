@@ -342,6 +342,18 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nrel-api-key">
+   NREL API Key
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-programming-interface-api">
+     Application Programming Interface (API)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#fetching-tmys-from-the-nsrdb">
    Fetching TMYs from the NSRDB
   </a>
@@ -416,15 +428,11 @@
 <p>Some Python modules are part of the <a class="reference external" href="https://docs.python.org/3/library/index.html">standard library</a>, but are not imported with builtins. We’ll use the <code class="docutils literal notranslate"><span class="pre">pathlib</span></code> module which is useful for accessing files and folders.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pvlib</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>  <span class="c1"># for getting environment variables</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>  <span class="c1"># for finding the example dataset</span>
+<span class="kn">import</span> <span class="nn">pvlib</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># for data wrangling</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># for visualization</span>
-<span class="kn">import</span> <span class="nn">pathlib</span>  <span class="c1"># for finding the example dataset</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
 </pre></div>
 </div>
 </div>
@@ -1209,6 +1217,36 @@ Freq: M, Name: GHI, dtype: int64
 </ul>
 <p><img alt="NSRDB Example" src="_images/tutorial_1_NSRDB_example.PNG" /></p>
 </div>
+<div class="section" id="nrel-api-key">
+<h2>NREL API Key<a class="headerlink" href="#nrel-api-key" title="Permalink to this headline">¶</a></h2>
+<p>At the <a class="reference external" href="https://developer.nrel.gov/">NREL Developer Network</a>, there are <a class="reference external" href="https://en.wikipedia.org/wiki/API">APIs</a> to a lot of valuable <a class="reference external" href="https://developer.nrel.gov/docs/solar/">solar resources</a> like <a class="reference external" href="https://developer.nrel.gov/docs/solar/nsrdb/">weather data from the NSRDB</a>, <a class="reference external" href="https://developer.nrel.gov/docs/solar/pvdaq-v3/">operational data from PVDAQ</a>, or indicative calculations using <a class="reference external" href="https://developer.nrel.gov/docs/solar/pvwatts/">PVWatts</a>. In order to use these resources from NREL, you need to <a class="reference external" href="https://developer.nrel.gov/signup/">register for a free API key</a>. You can test out the APIs using the <code class="docutils literal notranslate"><span class="pre">DEMO_KEY</span></code> but it has limited bandwidth compared to the <a class="reference external" href="https://developer.nrel.gov/docs/rate-limits/">usage limit for registered users</a>. NREL has some <a class="reference external" href="https://developer.nrel.gov/docs/api-key/">API usage instructions</a>, but pvlib has a few builtin functions, like <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.iotools.get_psm3.html"><code class="docutils literal notranslate"><span class="pre">pvlib.iotools.get_psm3()</span></code></a>, that wrap the NREL API, and call them for you to make it much easier to use. Skip ahead to the next section to learn more. But before you do…</p>
+<p><strong>Please pause now to visit <a class="reference external" href="https://developer.nrel.gov/signup/">https://developer.nrel.gov/signup/</a> and get an API key.</strong></p>
+<div class="section" id="application-programming-interface-api">
+<h3>Application Programming Interface (API)<a class="headerlink" href="#application-programming-interface-api" title="Permalink to this headline">¶</a></h3>
+<p>What exactly is an API? Nowadays, the phrase is used interchangeably with a “web API” but in general an API is just a recipe for how to interface with a application programmatically, <em>IE</em>: in code. An API could be as simple as a function signature or its published documentation, <em>EG</em>: the API for the <code class="docutils literal notranslate"><span class="pre">solarposition</span></code> function is you give it an ISO8601 formatted date with a timezone, the latitude, longitude, and elevation as numbers, and it returns the zenith and azimuth as numbers.</p>
+<p>A web API is the same, except the application is a web service, that you access at its URL using web methods. We won’t go into too much more detail here, but the most common web method is <code class="docutils literal notranslate"><span class="pre">GET</span></code> which is pretty self explanatory. Look over the <a class="reference external" href="https://developer.nrel.gov/docs/api-key/">NREL web usage instructions</a> for some examples, but interacting with a web API can be as easy as entering a URL into a browser. Try the URL below to <em>get</em> the PVWatts energy output for a fixed tilt site in <a class="reference external" href="https://goo.gl/maps/awkEcNGzSur9Has18">Broomfield, CO</a>.</p>
+<p><a class="reference external" href="https://developer.nrel.gov/api/pvwatts/v6.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10">https://developer.nrel.gov/api/pvwatts/v6.json?api_key=DEMO_KEY&amp;lat=40&amp;lon=-105&amp;system_capacity=4&amp;azimuth=180&amp;tilt=40&amp;array_type=1&amp;module_type=1&amp;losses=10</a></p>
+<p>In addition to just using your browser, you can also access web APIs programmatically. The most popular Python package to interact with web APIs is <a class="reference external" href="https://docs.python-requests.org/en/master/">requests</a>. There’s also free open source command-line tools like <a class="reference external" href="https://curl.se/">cURL</a> and <a class="reference external" href="https://httpie.io/">HTTPie</a>, and a popular nagware/freemium GUI application called <a class="reference external" href="https://www.postman.com/">Postman</a>.</p>
+<p><strong>If you have an NREL API key please enter it in the next cell.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NREL_API_KEY</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># &lt;-- please set your NREL API key here</span>
+
+<span class="c1"># note you must use &quot;quotes&quot; around your key, for example:</span>
+<span class="c1"># NREL_API_KEY = &#39;DEMO_KEY&#39;  # single or double both work fine</span>
+
+<span class="c1"># during the live tutorial, we&#39;ve stored a dedicated key on our server</span>
+<span class="k">if</span> <span class="n">NREL_API_KEY</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">NREL_API_KEY</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;NREL_API_KEY&#39;</span><span class="p">]</span>  <span class="c1"># get dedicated key for tutorial from servier</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="n">NREL_API_KEY</span> <span class="o">=</span> <span class="s1">&#39;DEMO_KEY&#39;</span>  <span class="c1"># OK for this demo, but better to get your own key</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="fetching-tmys-from-the-nsrdb">
 <h2>Fetching TMYs from the NSRDB<a class="headerlink" href="#fetching-tmys-from-the-nsrdb" title="Permalink to this headline">¶</a></h2>
 <p>The example TMY dataset used here is from an airport in North Carolina, but what if we wanted to model a PV system somewhere else? The NSRDB, one of many sources of weather data intended for PV modeling, is free and easy to access using pvlib. As an example, we’ll fetch a TMY dataset for Albuquerque, New Mexico at coordinates <a class="reference external" href="https://www.google.com/maps/&#64;35.0844,-106.6504,9z">(35.0844, -106.6504)</a>. We use <a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/generated/pvlib.iotools.get_psm3.html"><code class="docutils literal notranslate"><span class="pre">pvlib.iotools.get_psm3()</span></code></a> which returns a Python dictionary of metadata and a Pandas dataframe of the timeseries weather data.</p>
@@ -1216,8 +1254,8 @@ Freq: M, Name: GHI, dtype: int64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="p">,</span> <span class="n">df_abq</span> <span class="o">=</span> <span class="n">pvlib</span><span class="o">.</span><span class="n">iotools</span><span class="o">.</span><span class="n">get_psm3</span><span class="p">(</span>
     <span class="n">latitude</span><span class="o">=</span><span class="mf">35.0844</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=-</span><span class="mf">106.6504</span><span class="p">,</span>
-    <span class="n">api_key</span><span class="o">=</span><span class="s1">&#39;DEMO_KEY&#39;</span><span class="p">,</span>  <span class="c1"># OK for this demo, but better to get your own key</span>
-    <span class="n">email</span><span class="o">=</span><span class="s1">&#39;silvanaa@gmail.com&#39;</span><span class="p">,</span>
+    <span class="n">api_key</span><span class="o">=</span><span class="n">NREL_API_KEY</span><span class="p">,</span>
+    <span class="n">email</span><span class="o">=</span><span class="s1">&#39;mark.mikofski@sunpowercorp.com&#39;</span><span class="p">,</span>  <span class="c1"># &lt;-- any valid email works here fine</span>
     <span class="n">names</span><span class="o">=</span><span class="s1">&#39;tmy&#39;</span><span class="p">)</span>
 <span class="n">metadata</span>
 </pre></div>
@@ -1265,7 +1303,7 @@ Freq: M, Name: GHI, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Tutorial 1 - TMY Weather Data_55_0.png" src="_images/Tutorial 1 - TMY Weather Data_55_0.png" />
+<img alt="_images/Tutorial 1 - TMY Weather Data_57_0.png" src="_images/Tutorial 1 - TMY Weather Data_57_0.png" />
 </div>
 </div>
 <p>It’s not too surprising to see that our New Mexico location is significantly sunnier than the one in North Carolina.</p>
