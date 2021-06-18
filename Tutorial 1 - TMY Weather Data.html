@@ -407,7 +407,8 @@
 <li><p>Exploring a Pandas dataframe (<code class="docutils literal notranslate"><span class="pre">df</span></code>): <code class="docutils literal notranslate"><span class="pre">len()</span></code>, <code class="docutils literal notranslate"><span class="pre">df.head()</span></code>, <code class="docutils literal notranslate"><span class="pre">df.keys()</span></code></p></li>
 <li><p><a class="reference external" href="https://pvlib-python.readthedocs.io/en/stable/api.html#io-tools">pvlib input-output tools</a></p></li>
 <li><p>Ploting a Pandas dataframe (<code class="docutils literal notranslate"><span class="pre">df</span></code>): <code class="docutils literal notranslate"><span class="pre">df.plot()</span></code></p></li>
-<li><p>Aggregating data in a dataframe (<code class="docutils literal notranslate"><span class="pre">df</span></code>): <code class="docutils literal notranslate"><span class="pre">df.resample(freq).sum()</span></code></p></li>
+<li><p>Aggregating data in a dataframe (<code class="docutils literal notranslate"><span class="pre">df</span></code>): <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html"><code class="docutils literal notranslate"><span class="pre">df.resample(freq).sum()</span></code></a></p></li>
+<li><p>Pandas <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects"><code class="docutils literal notranslate"><span class="pre">DateOffsets</span></code></a> - shortcuts to set the frequency when resampling</p></li>
 <li><p>Getting NREL irradiance data from the web based API using pvlib</p></li>
 </ul>
 </div>
@@ -1143,7 +1144,7 @@ plt.ylabel(‘Irradiance [W/m<span class="math notranslate nohighlight">\(^2\)</
 </div>
 <div class="section" id="aggregating-hourly-data-to-monthly-summaries">
 <h2>Aggregating hourly data to monthly summaries<a class="headerlink" href="#aggregating-hourly-data-to-monthly-summaries" title="Permalink to this headline">¶</a></h2>
-<p>Pandas makes it easy to roll-up timeseries data into summary values.  For example, we can calculate total monthly GHI as a quick way to visualize the seasonality of solar resource:</p>
+<p>Pandas makes it easy to roll-up timeseries data into summary values. We can use the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.resample.html"><code class="docutils literal notranslate"><span class="pre">DataFrame.resample()</span></code></a> function with <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects"><code class="docutils literal notranslate"><span class="pre">DateOffsets</span></code></a> like <code class="docutils literal notranslate"><span class="pre">'M'</span></code> for months.  For example, we can calculate total monthly GHI as a quick way to visualize the seasonality of solar resource:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># summing hourly irradiance (W/m^2) gives insolation (W h/m^2)</span>
