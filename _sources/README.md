@@ -20,12 +20,12 @@ wrangling with Pandas, and data viz
 These tutorials are designed to run on [Jupyter](https://jupyter.org), a
 browser based interactive notebook that allows you to run the tutorial in the
 cloud without any additional setup. On the day of the tutorial, you can log
-into the tutorial [here](http://pvsc-python-tutorial.ml/).
+into the tutorial [here](https://pvsc-python-tutorial.eastus.cloudapp.azure.com/).
 
 ### THIS IS A 2-STEP PROCESS
 
-- **STEP 1**: click [this](http://pvsc-python-tutorial.ml/) --> http://pvsc-python-tutorial.ml/
-- **STEP 2**: click [this](https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&branch=main) --> https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&branch=main
+- **STEP 1**: click [this](https://pvsc-python-tutorial.eastus.cloudapp.azure.com/) --> https://pvsc-python-tutorial.eastus.cloudapp.azure.com/
+- **STEP 2**: click [this](https://pvsc-python-tutorial.eastus.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&branch=main) --> https://pvsc-python-tutorial.eastus.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&branch=main
 
 The first time you visit the tutorial, you will need to create an account. Use
 any username and password you like.
@@ -37,7 +37,7 @@ The first time you log into the tutorial, you will only see the scratch and shar
 ![first login](https://user-images.githubusercontent.com/1385621/119912003-5cf66b80-bf0f-11eb-874d-67ba2ff1bb66.png)
 
 After you log in, you need to download the tutorial from this GitHub repository by following this
-[link](https://pvsc-python-tutorial.ml/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&branch=main):
+[link](https://pvsc-python-tutorial.eastus.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https://github.com/PVSC-Python-Tutorials/PVSC48-Python-Tutorial&branch=main):
 
 You only need to download the repository once, but you can always use either link to start the tutorial during the conference.
 From now on you will see the PVSC48-Python-Tutorial folder in the list.
@@ -48,9 +48,9 @@ Click the folder to open, and you'll see the full list. Click `Tutorial 0 - Over
 
 ![full list of tutorials](https://user-images.githubusercontent.com/1385621/119912314-15241400-bf10-11eb-8a2c-1fc371e0f4e8.png)
 
-Sometimes, if you are idle too long, the tutorial dies. Just click the [link to the tutorial](http://pvsc-python-tutorial.ml/) again to reconnect.
+Sometimes, if you are idle too long, the tutorial dies. Just click the [link to the tutorial](https://pvsc-python-tutorial.eastus.cloudapp.azure.com/) again to reconnect.
 
-http://pvsc-python-tutorial.ml/
+https://pvsc-python-tutorial.eastus.cloudapp.azure.com/
 
 ### Jupyter Book docs
 
